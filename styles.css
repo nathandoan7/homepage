@@ -6,6 +6,8 @@
 
 	--mainText:black;
 	--secondaryText:#4b5156;
+
+	--themeDotBorder:#000;
 }
 
 html, body {
@@ -68,12 +70,17 @@ h6 {font-size: 16px;}
 
 .intro-wrapper {
 	background-color: var(--secondaryColor);
+	border-radius: 5px 5px 0 0;
 	border: 1px solid var(--borderColor);
 
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+/* if you want to create a shadow on any box, just google "css shadow gen", copy and paste, like I did here.*/
 
 	display: grid;
 	grid-template-columns: 1fr 1fr;   /* fr is a fractional unit.  1fr = the whole space.  1fr 1fr = the whole space divided into two parts.  1fr 2fr = you get the picture.  1fr is a flexible unit.  it is one fraction of the available space.*/
-	grid-template-rows: 3em 30em;
 	grid-template-areas:  /* this is a picture, using the named items from below!*/
 		'nav-wrapper nav-wrapper'
 		'left-column right-column';
@@ -83,17 +90,113 @@ h6 {font-size: 16px;}
 
 .nav-wrapper {
 	grid-area: nav-wrapper;  /* this assigns a name to the grid item.  Named grid items can be referred to by the grid-template-areas property of the grid container.*/
-	border: 1px dashed lightcoral;
+	border-bottom: 1px solid var(--borderColor);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;  	/* centers them in cross-axis, just like justify-content aligns along main axis.  which axis is which changes if you set "flex-direction: column" */
+	background-color: var(--mainColor);
+	border-radius: 5px 5px 0 0;
+}
+
+#navigation{
+	margin: 0;
+	padding: 10px;
+}
+
+#navigation li{
+	display: inline-block; /*like inline, but allows you to set height and width*/
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.dots-wrapper{
+	display: flex;
+	padding: 10px;
+}
+
+#dot-1{
+	background-color: red;
+}
+
+#dot-2{
+	background-color: green;
+}
+
+#dot-3{
+	background-color: blue;
+}
+
+.browser-dot{
+	background-color: black;
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;  /* full circle */
+	margin: 5px;
 }
 
 .left-column {
 	grid-area: left-column;
-	border: 1px dashed lightcoral;
+	padding-top:50px;
+	padding-bottom: 50px;
+
+}
+
+#profile_pic{
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+	border: 2px solid var(--borderColor);
+
+	display: block;
+	margin: 0 auto;
+}
+
+#theme-options-wrapper{
+	display: flex;
+	justify-content: center;
+}
+
+.theme-dot{
+	height: 30px;
+	width: 30px;
+	background-color: white;
+	border-radius: 50%;
+
+	margin: 5px;
+	border: 2px solid var(--themeDotBorder);
+
+	cursor: pointer;
+
+}
+
+.theme-dot:hover{
+	border-width: 5px;
+}
+
+#light-mode{
+	background-color: #fff;
+}
+
+#blue-mode{
+	background-color: #239945;
+}
+
+#green-mode{
+	background-color: #112321;
+}
+
+#purple-mode{
+	background-color: purple;
+}
+
+#settings-note{
+	font-size: 12px;
+	font-style: italic;
+	text-align: center;
 }
 
 .right-column {
 	grid-area: right-column;
-	border: 1px dashed lightcoral;
 }
 
 @media screen and (max-width: 1200px) {
@@ -101,3 +204,8 @@ h6 {font-size: 16px;}
 		width:95%;
 	}
 }
+
+
+
+
+/* I love how all the css is in perfect chronological order.   boxes inside of boxes, top to bottom, left to right.*/
