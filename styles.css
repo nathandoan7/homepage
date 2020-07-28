@@ -1,0 +1,103 @@
+:root {
+	--mainColor:#eaeaea;
+	--secondaryColor:#fff;
+
+	--borderColor:#c1c1c1;
+
+	--mainText:black;
+	--secondaryText:#4b5156;
+}
+
+html, body {
+	padding:0;
+	margin:0;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+	color:var(--mainText);
+	font-family: serif;
+}
+
+p, li, span, label, input, textarea {
+	color:var(--secondaryText);
+	font-family:sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color:#17a2b8;
+}
+
+ul {
+	list-style: none;
+}
+
+h1 {font-size: 56px;}
+h2 {font-size: 36px;}
+h3 {font-size: 28px;}
+h4 {font-size: 24px;}
+h5 {font-size: 20px;}
+h6 {font-size: 16px;}
+
+.s1 {
+	background-color: var(--mainColor);
+	border-bottom: 1px solid var(--borderColor);
+	overflow: auto;
+}
+
+.s2 {
+	background-color: var(--secondaryColor);
+	border-bottom: 1px solid var(--borderColor);
+	overflow:auto;
+}
+
+.main-container {
+	width:1200px;
+	margin:0 auto;
+}
+
+.greeting-wrapper {
+	display:grid;
+
+	justify-content: center;	/*centers content on inline-axis / x-axis*/
+	align-content: center;		/*centers content on "block" axis / y-axis*/
+	border:2px dashed lightcoral;
+	min-height: 20em;
+
+}
+
+.intro-wrapper {
+	background-color: var(--secondaryColor);
+	border: 1px solid var(--borderColor);
+
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;   /* fr is a fractional unit.  1fr = the whole space.  1fr 1fr = the whole space divided into two parts.  1fr 2fr = you get the picture.  1fr is a flexible unit.  it is one fraction of the available space.*/
+	grid-template-rows: 3em 30em;
+	grid-template-areas:  /* this is a picture, using the named items from below!*/
+		'nav-wrapper nav-wrapper'
+		'left-column right-column';
+
+
+}
+
+.nav-wrapper {
+	grid-area: nav-wrapper;  /* this assigns a name to the grid item.  Named grid items can be referred to by the grid-template-areas property of the grid container.*/
+	border: 1px dashed lightcoral;
+}
+
+.left-column {
+	grid-area: left-column;
+	border: 1px dashed lightcoral;
+}
+
+.right-column {
+	grid-area: right-column;
+	border: 1px dashed lightcoral;
+}
+
+@media screen and (max-width: 1200px) {
+	.main-container{
+		width:95%;
+	}
+}
