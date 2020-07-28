@@ -8,6 +8,9 @@
 	--secondaryText:#4b5156;
 
 	--themeDotBorder:#000;
+	--shadowBg:rgb(1,2,3,0.8);
+
+	--previewShadow:#112358;
 }
 
 html, body {
@@ -156,7 +159,7 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	justify-content: center;
 }
 
-.theme-dot{
+.theme-dot{ 		/*how crazy that a div can become a circle.  a triangle?*/
 	height: 30px;
 	width: 30px;
 	background-color: white;
@@ -197,6 +200,61 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
 .right-column {
 	grid-area: right-column;
+	display: grid;
+	align-content: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#preview{
+	width: 300px;
+	border: 1.5px solid #123456;
+	background-color: var(--shadowBg);
+	padding:15px;
+	position: relative;
+}
+
+#preview-shadow{
+	background-color: var(--previewShadow);
+	width: 300px;
+	height: 120px;
+	padding-left: 30px; /*this padding left and top pushes the #preview element, which is nested inside, down and to the right.*/
+	padding-top: 30px;
+}
+
+.corner {			/*how crazy that a div can become a circle.*/
+	width:7px;
+	height: 7px;
+	border-radius: 50%;
+	border: 1.5px solid green;
+	background-color:#fff;
+	position: absolute;
+}
+
+#corner-tl{
+	top: -5px;  /* this pushes the div dots up outside of the main seciont and into the margin*/
+	left: -5px;  /*when top and left isn't set, the dots go to the corner of the main content.  But as soon as they are set, they are set relative to the corner of the padding.  that's strange.*/
+}
+
+#corner-tr{
+	top: -5px;
+	right: -5px;
+}
+
+#corner-bl{
+	bottom: -5px;
+	left: -5px;
+}
+
+#corner-br{
+	bottom: -5px;
+	right: -5px;
+}
+
+.about-wrapper{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
+	/* this says "fit as many columns as you can"
 }
 
 @media screen and (max-width: 1200px) {
@@ -205,7 +263,17 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	}
 }
 
-
+@media screen and (max-width: 800px) {
+	.intro-wrapper{
+		grid-template-columns: 1fr;   
+		grid-template-areas:  
+			'nav-wrapper'
+			'left-column'
+			'right-column';
+	}/* it is in media queries that css grids really shine!!!  easily re-align everything. remember, these media queries overwrite any of the same properties that were used earlier, but do not override other properties that were set earlier.*/
+}	.right-column{
+		justify-content: center;
+}
 
 
 /* I love how all the css is in perfect chronological order.   boxes inside of boxes, top to bottom, left to right.*/
